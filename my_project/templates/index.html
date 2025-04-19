@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Startup Profit Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0d1b2a, #1b263b);
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #1e2a38;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 221, 0, 0.3);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #ffdd00;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      text-align: left;
+      color: #cccccc;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f4f4f4;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 25px;
+      background-color: #ffdd00;
+      color: #0d1b2a;
+      padding: 12px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffe347;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Predict Startup Profit 💰</h1>
+    <form action="/predict" method="post">
+      <label for="rd">R&D Spend</label>
+      <input name="rd" type="number" step="any" required>
+
+      <label for="admin">Administration Spend</label>
+      <input name="admin" type="number" step="any" required>
+
+      <label for="marketing">Marketing Spend</label>
+      <input name="marketing" type="number" step="any" required>
+
+      <label for="state">Select State</label>
+      <select name="state" required>
+        <option value="California">California</option>
+        <option value="Florida">Florida</option>
+        <option value="New York">New York</option>
+      </select>
+
+      <button type="submit">Predict Profit</button>
+    </form>
+
+    {% if prediction %}
+      <div class="result">
+        <strong>Predicted Profit: ₹{{ prediction }}</strong>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
+
